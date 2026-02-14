@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nael El Ghobashy - Operations & Growth Leader</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #0a0a0a;
+            --secondary: #00d4ff;
+            --accent: #ff3366;
+            --text: #1a1a1a;
+            --text-light: #666;
+            --bg: #ffffff;
+            --bg-alt: #f8f9fa;
+            --border: #e0e0e0;
+            --shadow: rgba(0,0,0,0.08);
+        }
+        
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, #ffffff 0%, #f0f4f8 100%);
+        }
+        
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0,212,255,0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -200px;
+            right: -200px;
+            animation: float 20s infinite ease-in-out;
+        }
+        
+        .bg-animation::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255,51,102,0.06) 0%, transparent 70%);
+            border-radius: 50%;
+            bottom: -100px;
+            left: -100px;
+            animation: float 15s infinite ease-in-out reverse;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(50px, -50px) rotate(120deg); }
+            66% { transform: translate(-30px, 30px) rotate(240deg); }
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+            animation: slideDown 0.6s ease-out;
+        }
+        
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+        
+        nav .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 100px 40px 80px;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 80px;
+            align-items: center;
+        }
+        
+        .hero-text h1 {
+            font-size: 72px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+        
+        .hero-text .highlight {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-text .subtitle {
+            font-size: 24px;
+            color: var(--text-light);
+            margin-bottom: 30px;
+            font-weight: 300;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+        
+        .hero-text .tagline {
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--text);
+            margin-bottom: 40px;
+            max-width: 600px;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+        }
+        
+        .hero-stats {
+            display: flex;
+            gap: 50px;
+            margin-bottom: 40px;
+            animation: fadeInUp 0.8s ease-out 0.8s both;
+        }
+        
+        .stat {
+            flex: 1;
+        }
+        
+        .stat-number {
+            font-size: 48px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            animation: fadeInUp 0.8s ease-out 1s both;
+        }
+        
+        .btn {
+            padding: 16px 36px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            box-shadow: 0 10px 30px rgba(0,212,255,0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(0,212,255,0.4);
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .hero-visual {
+            position: relative;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+        
+        .profile-card {
+            background: white;
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 20px 60px var(--shadow);
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .profile-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--secondary) 0%, var(--accent) 100%);
+        }
+        
+        .contact-info {
+            margin-bottom: 30px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            font-size: 14px;
+            color: var(--text);
+        }
+        
+        .contact-item .icon {
+            width: 40px;
+            height: 40px;
+            background: var(--bg-alt);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+        
+        .languages {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid var(--border);
+        }
+        
+        .languages h4 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            color: var(--text-light);
+        }
+        
+        .lang-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 15px;
+        }
+        
+        /* Section Styles */
+        section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 80px 40px;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+        }
+        
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Experience Section */
+        .timeline {
+            position: relative;
+            padding-left: 50px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, var(--secondary) 0%, var(--accent) 100%);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 60px;
+            padding: 35px;
+            background: white;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            box-shadow: 0 5px 20px var(--shadow);
+            transition: all 0.3s;
+        }
+        
+        .timeline-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 40px var(--shadow);
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -50px;
+            top: 40px;
+            width: 15px;
+            height: 15px;
+            background: var(--secondary);
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px var(--secondary);
+        }
+        
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 20px;
+            gap: 20px;
+        }
+        
+        .job-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--primary);
+        }
+        
+        .job-company {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-light);
+            margin-bottom: 5px;
+        }
+        
+        .job-location {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+        
+        .job-date {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            color: var(--text-light);
+            background: var(--bg-alt);
+            padding: 8px 16px;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+        
+        .job-achievements {
+            list-style: none;
+        }
+        
+        .job-achievements li {
+            padding-left: 30px;
+            margin-bottom: 12px;
+            position: relative;
+            line-height: 1.7;
+        }
+        
+        .job-achievements li::before {
+            content: '▸';
+            position: absolute;
+            left: 10px;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+        
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .skill-category {
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            box-shadow: 0 5px 20px var(--shadow);
+            transition: all 0.3s;
+        }
+        
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px var(--shadow);
+        }
+        
+        .skill-category h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .skill-category .icon {
+            font-size: 24px;
+        }
+        
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .skill-tag {
+            background: var(--bg-alt);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text);
+            transition: all 0.3s;
+        }
+        
+        .skill-tag:hover {
+            background: var(--secondary);
+            color: white;
+            transform: scale(1.05);
+        }
+        
+        /* Education Section */
+        .education-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            box-shadow: 0 5px 20px var(--shadow);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .education-card h3 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .education-card .degree {
+            font-size: 18px;
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+        
+        .education-card .details {
+            display: flex;
+            gap: 30px;
+            font-size: 15px;
+            color: var(--text-light);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 60px 40px 40px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .footer-divider {
+            height: 1px;
+            background: rgba(255,255,255,0.2);
+            margin: 30px 0;
+        }
+        
+        .footer-note {
+            color: rgba(255,255,255,0.6);
+            font-size: 14px;
+        }
+        
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        .fade-in-delay-1 { animation-delay: 0.1s; }
+        .fade-in-delay-2 { animation-delay: 0.2s; }
+        .fade-in-delay-3 { animation-delay: 0.3s; }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .hero-visual {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+            
+            .hero-text h1 {
+                font-size: 56px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav .container {
+                padding: 15px 20px;
+            }
+            
+            .hero {
+                padding: 60px 20px 40px;
+            }
+            
+            .hero-text h1 {
+                font-size: 42px;
+            }
+            
+            .hero-text .subtitle {
+                font-size: 20px;
+            }
+            
+            .hero-stats {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+            }
+            
+            section {
+                padding: 60px 20px;
+            }
+            
+            .section-title {
+                font-size: 36px;
+            }
+            
+            .timeline {
+                padding-left: 30px;
+            }
+            
+            .job-header {
+                flex-direction: column;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+    
+    <nav>
+        <div class="container">
+            <div class="logo">NE</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <section class="hero" id="about">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Nael El <span class="highlight">Ghobashy</span></h1>
+                <p class="subtitle">Operations & Growth Leader</p>
+                <p class="tagline">
+                    Marketplace strategy specialist with 12+ years scaling multi-country operations, 
+                    optimizing supply ecosystems, and driving sustainable growth across EMEA, Europe, 
+                    UK&I, North America, and APAC.
+                </p>
+                
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-number">12+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">6</div>
+                        <div class="stat-label">Years at Uber</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">150+</div>
+                        <div class="stat-label">Countries Managed</div>
+                    </div>
+                </div>
+                
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn btn-primary">Get in Touch</a>
+                    <a href="#experience" class="btn btn-secondary">View Experience</a>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="profile-card">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="icon">📧</div>
+                            <div>nael.elghobashy@gmail.com</div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="icon">📱</div>
+                            <div>+201111131181</div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="icon">💼</div>
+                            <div><a href="https://www.linkedin.com/in/nael-el-ghobashy-140b63b5/" target="_blank" style="color: var(--text); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--secondary)'" onmouseout="this.style.color='var(--text)'">LinkedIn Profile</a></div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="icon">📍</div>
+                            <div>Cairo, Egypt</div>
+                        </div>
+                    </div>
+                    
+                    <div class="languages">
+                        <h4>Languages</h4>
+                        <div class="lang-item">
+                            <span>Arabic</span>
+                            <span><strong>Native</strong></span>
+                        </div>
+                        <div class="lang-item">
+                            <span>English</span>
+                            <span><strong>Fluent</strong></span>
+                        </div>
+                    </div>
+                    
+                    <div class="languages">
+                        <h4>Availability</h4>
+                        <p style="font-size: 15px; color: var(--text);">
+                            Open to international travel and relocation
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="experience">
+        <div class="section-header">
+            <h2 class="section-title">Professional Experience</h2>
+            <p class="section-subtitle">
+                A proven track record of driving operational excellence and marketplace growth
+            </p>
+        </div>
+        
+        <div class="timeline">
+            <div class="timeline-item fade-in">
+                <div class="job-header">
+                    <div>
+                        <h3 class="job-title">Global Help Center Operations Manager</h3>
+                        <div class="job-company">VALEO | GLOBAL</div>
+                        <div class="job-location">Global Operations</div>
+                    </div>
+                    <div class="job-date">2025</div>
+                </div>
+                <ul class="job-achievements">
+                    <li>Oversee global operations across 150+ countries; improved NPS from 40 to 65 (+62.5%) and scaled operations from 7 to 27 countries while maintaining the same resource costs and headcount</li>
+                    <li>Direct vendor and supply partner performance management, contract negotiations, and cost optimization; implement SOP standardization and Knowledge Base enhancements across all regions</li>
+                    <li>Manage 3-month rolling forecasts, operational licensing (Salesforce, TecDoc), and supplier recruitment/training</li>
+                    <li>Reduced partner attrition and implemented comprehensive KPI framework (Quality, AHT, Post-NPS, Adherence, Efficiency, Utilization)</li>
+                    <li>Lead bi-weekly stakeholder reviews with regional and global teams, guide new country deployments, and contribute to omnichannel tool design and implementation</li>
+                </ul>
+            </div>
+            
+            <div class="timeline-item fade-in fade-in-delay-1">
+                <div class="job-header">
+                    <div>
+                        <h3 class="job-title">Head of Merchandising</h3>
+                        <div class="job-company">Kids Trading Co. (Jadwa Investments Subsidiary)</div>
+                        <div class="job-location">Remote</div>
+                    </div>
+                    <div class="job-date">2025</div>
+                </div>
+                <ul class="job-achievements">
+                    <li>Developed and executed supply-side growth strategy: reduced aged inventory by SAR 3M through optimized stock rotation and replenishment logic</li>
+                    <li>Built automated stock transfer algorithm, reducing acquisition costs by 10% and cutting aged stock by 30%</li>
+                    <li>Increased direct revenue by 50%+ through data-driven supply allocation and built algorithms leveraging customer search/purchase behaviors to personalize product visibility, increasing daily conversion by 35%</li>
+                    <li>Introduced product bundling concept, boosting aging inventory sales by 200%</li>
+                    <li>Re-sorted and categorized products based on trend insights and seasonality, enhancing conversion rates across all product lines</li>
+                </ul>
+            </div>
+            
+            <div class="timeline-item fade-in fade-in-delay-2">
+                <div class="job-header">
+                    <div>
+                        <h3 class="job-title">Program Manager – Community Operations</h3>
+                        <div class="job-company">VALU GROUP (EFG HERMES SUBSIDIARY)</div>
+                        <div class="job-location">Cairo, Egypt</div>
+                    </div>
+                    <div class="job-date">2023–2025</div>
+                </div>
+                <ul class="job-achievements">
+                    <li>Spearheaded global expansion generating 50 MM GMV and directed comprehensive rebranding initiative, boosting brand recognition by 30% and partner retention by 15%</li>
+                    <li>Developed merchant/partner lifecycle strategy for 7,500+ supply partners: designed acquisition funnels, automated onboarding workflows (increasing conversion by 3.5x and reducing SLA from 15 to 2 days)</li>
+                    <li>Cut partner churn by 40% while increasing revenue by 25%</li>
+                    <li>Revamped Knowledge Base and overhauled escalation process, improving CSAT from 62% to 80% and cutting complaint SLA from 21 to 5 days (76% reduction)</li>
+                    <li>Launched agent development program, increasing internal promotion rates by 30%</li>
+                </ul>
+            </div>
+            
+            <div class="timeline-item fade-in fade-in-delay-3">
+                <div class="job-header">
+                    <div>
+                        <h3 class="job-title">Community Operations Manager</h3>
+                        <div class="job-company">VALU GROUP (EFG HERMES SUBSIDIARY)</div>
+                        <div class="job-location">Cairo, Egypt</div>
+                    </div>
+                    <div class="job-date">2022–2023</div>
+                </div>
+                <ul class="job-achievements">
+                    <li>Managed 70+ agents across multiple shifts, maintaining 90% CSAT</li>
+                    <li>Sourced and hired 50 new specialists from premium companies (Vodafone, Uber, MBC, HSBC)</li>
+                    <li>Diverted 25%+ of call volume to chat support, reducing operational costs</li>
+                    <li>Launched app support team, raising Google Play ratings from 3.1 to 4.2 and Apple Store ratings from 2.4 to 3.4</li>
+                    <li>Deployed digital transformation tools (Web Engage CRM, Fresh Sales, Novelvox, Verint), enhancing partner and customer support capabilities</li>
+                </ul>
+            </div>
+            
+            <div class="timeline-item fade-in">
+                <div class="job-header">
+                    <div>
+                        <h3 class="job-title">EMEA Customer Support Team Leader, Center of Excellence</h3>
+                        <div class="job-company">UBER (Europe, Middle East & Africa)</div>
+                        <div class="job-location">Cairo, Egypt</div>
+                    </div>
+                    <div class="job-date">2016–2022</div>
+                </div>
+                <ul class="job-achievements">
+                    <li>Established and led the Cairo Center of Excellence, managing cross-functional support across Rider, Driver, Incident Response, Lost Items, and Eats verticals for the entire EMEA region</li>
+                    <li>Developed deep understanding of driver lifecycle, key supply-side pain points, and marketplace dynamics</li>
+                    <li>Partnered closely with Operations and Product teams to identify and escalate systemic issues impacting driver earnings, onboarding friction, and platform reliability</li>
+                    <li>Contributed to improved driver engagement and retention across the region</li>
+                    <li>Implemented quality assurance systems in Salesforce, Zendesk, and Bliss, achieving 0% error rates and 20–30% operational efficiency gains</li>
+                    <li>Recognized as Team Leader of the Quarter for exceptional performance</li>
+                    <li>Served as the voice of the driver and earner within the support organization, advocating for product improvements and process changes</li>
+                </ul>
+            </div>
+            
+            <div class="timeline-item fade-in">
+                <div class="job-header">
+                    <div>
+                        <h3 class="job-title">Assistant Branch Manager</h3>
+                        <div class="job-company">ETISALAT BY E&</div>
+                        <div class="job-location">Cairo, Egypt</div>
+                    </div>
+                    <div class="job-date">2014–2015</div>
+                </div>
+                <ul class="job-achievements">
+                    <li>Progressed from Sales Executive to Assistant Branch Manager</li>
+                    <li>Earned multiple Sales Rep of the Month awards</li>
+                    <li>Managed branch operations, staff training, and sales initiatives</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <section id="skills" style="background: var(--bg-alt);">
+        <div class="section-header">
+            <h2 class="section-title">Skills & Competencies</h2>
+            <p class="section-subtitle">
+                Comprehensive expertise across operations, strategy, and technology
+            </p>
+        </div>
+        
+        <div class="skills-grid">
+            <div class="skill-category fade-in">
+                <h3><span class="icon">🎯</span> Core Competencies</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Marketplace Strategy</span>
+                    <span class="skill-tag">Supply-Side Strategy</span>
+                    <span class="skill-tag">Driver/Partner Acquisition</span>
+                    <span class="skill-tag">Retention & Churn Reduction</span>
+                    <span class="skill-tag">Vendor Management</span>
+                    <span class="skill-tag">Contract Negotiation</span>
+                    <span class="skill-tag">Financial Oversight</span>
+                    <span class="skill-tag">Unit Economics</span>
+                </div>
+            </div>
+            
+            <div class="skill-category fade-in fade-in-delay-1">
+                <h3><span class="icon">📊</span> Analytics & Performance</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Data-Driven Decisions</span>
+                    <span class="skill-tag">KPIs & SLAs</span>
+                    <span class="skill-tag">NPS & CSAT</span>
+                    <span class="skill-tag">Performance Metrics</span>
+                    <span class="skill-tag">Forecasting & Planning</span>
+                    <span class="skill-tag">Process Optimization</span>
+                    <span class="skill-tag">SOP Standardization</span>
+                </div>
+            </div>
+            
+            <div class="skill-category fade-in fade-in-delay-2">
+                <h3><span class="icon">👥</span> Leadership & Management</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Team Development</span>
+                    <span class="skill-tag">Cross-Functional Leadership</span>
+                    <span class="skill-tag">Stakeholder Management</span>
+                    <span class="skill-tag">Problem Solving</span>
+                    <span class="skill-tag">Digital Transformation</span>
+                    <span class="skill-tag">Ambiguous Environments</span>
+                </div>
+            </div>
+            
+            <div class="skill-category fade-in fade-in-delay-3">
+                <h3><span class="icon">🛠️</span> Tools & Platforms</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Salesforce</span>
+                    <span class="skill-tag">Zendesk</span>
+                    <span class="skill-tag">Bliss</span>
+                    <span class="skill-tag">Web Engage CRM</span>
+                    <span class="skill-tag">Fresh Sales</span>
+                    <span class="skill-tag">Novelvox</span>
+                    <span class="skill-tag">Verint</span>
+                    <span class="skill-tag">SQL (Advanced)</span>
+                    <span class="skill-tag">Advanced Excel</span>
+                    <span class="skill-tag">CRM & Analytics</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="education">
+        <div class="section-header">
+            <h2 class="section-title">Education</h2>
+        </div>
+        
+        <div class="education-card fade-in">
+            <h3>Ain Shams University</h3>
+            <p class="degree">Bachelor of Business Administration (Management), Minor in Accounting</p>
+            <div class="details">
+                <span>📍 Cairo, Egypt</span>
+                <span>📅 2009–2013</span>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact" style="background: var(--bg-alt);">
+        <div class="section-header">
+            <h2 class="section-title">Let's Connect</h2>
+            <p class="section-subtitle">
+                Open to discussing opportunities in operations leadership, marketplace strategy, and supply optimization
+            </p>
+        </div>
+        
+        <div style="text-align: center; margin-top: 40px;">
+            <div style="display: inline-flex; gap: 20px; flex-wrap: wrap; justify-content: center;">
+                <a href="mailto:nael.elghobashy@gmail.com" class="btn btn-primary">Email Me</a>
+                <a href="tel:+201111131181" class="btn btn-secondary">Call Now</a>
+                <a href="https://www.linkedin.com/in/nael-el-ghobashy-140b63b5/" target="_blank" class="btn btn-secondary">LinkedIn</a>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#about">About</a>
+                <a href="#experience">Experience</a>
+                <a href="#skills">Skills</a>
+                <a href="#education">Education</a>
+                <a href="#contact">Contact</a>
+                <a href="https://www.linkedin.com/in/nael-el-ghobashy-140b63b5/" target="_blank">LinkedIn</a>
+            </div>
+            <div class="footer-divider"></div>
+            <p class="footer-note">
+                © 2026 Nael El Ghobashy. All rights reserved.
+            </p>
+        </div>
+    </footer>
+    
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Add scroll effect to nav
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                nav.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
+            } else {
+                nav.style.boxShadow = 'none';
+            }
+            
+            lastScroll = currentScroll;
+        });
+    </script>
+</body>
+</html>
